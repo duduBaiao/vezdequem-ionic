@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar class="toolbar-with-sub-title">
+    <ion-title>
+      {{purposeTitle.header}}<br>
+      <label class="toolbar-sub-title">{{consumption.group.name}}</label>
+    </ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only [disabled]="!dataLoaded" (tap)="editGroup()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>  
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="consumption">
+
+  <div *ngIf="dataLoaded">
+    
+    <div *ngIf="consumption.group.choose_takers">
+      <ion-list>
+        <ion-list-header>{{purposeTitle.payer}}</ion-list-header>      
+
+        <button ion-item *ngFor="let payerRecord of [consumption.payerRecord]" (tap)="choosePayer()">
+          {{payerRecord.user.nick_name}}
+        </button>
+      </ion-list>    
+
+      <ion-list>
+        <ion-list-header>{{purposeTitle.takers}}</ion-list-header>
+
+        <ion-item *ngFor="let record of consumption.records">
+          <ion-label>{{record.user.nick_name}}</ion-label>
+          <ion-checkbox [(ngModel)]="record.took" (ionChange)="recordChanged($event, record)"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <div *ngIf="selectionCount == 1">1 selecionado</div>
+          <div *ngIf="selectionCount > 1">{{selectionCount}} selecionados</div>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngIf="!consumption.group.choose_takers">
+      <ion-list radio-group [(ngModel)]="selectedPayerId" (ionChange)="chosenChanged()">
+
+        <ion-list-header>{{purposeTitle.payer}}</ion-list-header> 
+
+        <ion-item *ngFor="let record of consumption.records">
+          <ion-label>
+            {{record.user.nick_name}}
+
+            <p *ngIf="(consumption.group.purpose == purposeAmmount) && record.last_payment">
+              {{purposeTitle.paid}} ${{ record.last_paid | localeDecimal:defaultLocale:currencyDigits }}
+              em {{ record.last_payment | localeDate:defaultLocale:'dd/MM' }}
+              às {{ record.last_payment | localeDate:defaultLocale:'shortTime' }}
+            </p>
+
+            <p *ngIf="(consumption.group.purpose == purposeCounter) && record.last_payment">
+              {{purposeTitle.paid}}
+              em {{ record.last_payment | localeDate:defaultLocale:'dd/MM' }}
+              às {{ record.last_payment | localeDate:defaultLocale:'shortTime' }}
+            </p>
+          </ion-label>
+          <ion-radio value="{{record.id}}"></ion-radio>
+        </ion-item>
+      </ion-list>    
+    </div>
+
+    <form [formGroup]="consumptionForm" (submit)="submit($event)">
+
+      <ion-list *ngIf="consumption.group.purpose == purposeAmmount">
+        <ion-item>
+          <ion-label color="primary">Valor unitário $</ion-label>
+          <ion-input
+            formControlName="unit"
+            placeholder="digite aqui"
+            [(ngModel)]="unityValue"
+            (input)="unitValueChanged($event)">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary">Valor total $</ion-label>
+          <ion-input
+            formControlName="total"
+            placeholder="ou aqui"
+            [(ngModel)]="totalValue"
+            (input)="totalValueChanged($event)">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div padding-left padding-right padding-bottom>
+        <button ion-button block type="submit" [disabled]="(consumption.group.choose_takers && (selectionCount == 0)) || ((consumption.group.purpose == purposeAmmount) && !(consumption.paid > 0))">
+          Registrar
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+  <try-again *ngIf="!dataLoaded && errorMessage.length > 0"
+    message="{{errorMessage}}" (onTried)="tryAgain()">
+  </try-again>
+  
+</ion-content>

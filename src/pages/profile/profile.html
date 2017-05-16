@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Editar cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile">
+
+  <form [formGroup]="profileForm" (submit)="submit($event)">
+
+    <ion-list inset>
+
+      <ion-item>
+        <ion-input formControlName="nick_name" type="text" placeholder="nome ou apelido"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding-left padding-right>
+      <button ion-button block type="submit">Salvar</button>
+    </div>
+
+  </form>
+  
+</ion-content>

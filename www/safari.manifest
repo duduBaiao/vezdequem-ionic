@@ -1,0 +1,33 @@
+CACHE MANIFEST
+# Cache manifest version cache-v2017-05-12-17-33
+ 
+build/main.js
+build/main.css
+build/polyfills.js
+index.html
+manifest.json
+manup.js
+assets/fonts/ionicons.eot
+assets/fonts/ionicons.scss
+assets/fonts/ionicons.svg
+assets/fonts/ionicons.ttf
+assets/fonts/ionicons.woff
+assets/fonts/ionicons.woff2
+assets/fonts/noto-sans-bold.ttf
+assets/fonts/noto-sans-bold.woff
+assets/fonts/noto-sans-regular.ttf
+assets/fonts/noto-sans-regular.woff
+assets/fonts/noto-sans.scss
+assets/fonts/roboto-bold.ttf
+assets/fonts/roboto-bold.woff
+assets/fonts/roboto-bold.woff2
+assets/fonts/roboto-light.ttf
+assets/fonts/roboto-light.woff
+assets/fonts/roboto-light.woff2
+assets/fonts/roboto-medium.ttf
+assets/fonts/roboto-medium.woff
+assets/fonts/roboto-medium.woff2
+assets/fonts/roboto-regular.ttf
+assets/fonts/roboto-regular.woff
+assets/fonts/roboto-regular.woff2
+assets/fonts/roboto.scss

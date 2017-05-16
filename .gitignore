@@ -1,0 +1,10 @@
+.vscode/
+hooks/
+node_modules/
+platforms/
+plugins/
+www/assets/fonts/
+www/build/
+www/build/index.html
+.DS_Store
+

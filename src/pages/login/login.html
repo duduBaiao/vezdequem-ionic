@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Vez de Quem?</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login">
+
+  <form [formGroup]="loginForm" (submit)="submit($event)">
+
+    <ion-list inset>
+
+      <ion-item>
+        <ion-input formControlName="email" type="email" placeholder="email" class="text-lower-case"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="password" type="password" placeholder="senha"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    
+    <div padding-left padding-right>
+      <button ion-button block icon-left type="submit">
+        <ion-icon name="key"></ion-icon>
+        Logar
+      </button>
+    </div>
+
+  </form>
+
+  <div padding-left padding-right>
+    <button ion-button block outline icon-right (tap)="register()">
+      Cadastre-se
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+
+    <button ion-button block outline icon-right (tap)="recoverPassword()">
+      Recuperar Senha
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
+
+  <p padding-top text-center small>versão {{appVersion}}</p>
+    
+</ion-content>

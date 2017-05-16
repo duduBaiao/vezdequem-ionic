@@ -1,0 +1,37 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Variables
+// --------------------------------------------------
+// Shared Sass variables go in the app.variables.scss file
+@import '../theme/variables';
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+// App Shared Sass
+// --------------------------------------------------
+// All Sass files that make up this app goes into the app.core.scss file.
+// For simpler CSS overrides, custom app CSS must come after Ionic's CSS.
+@import 'app.core';
+
+
+// App Material Design Only Sass
+// --------------------------------------------------
+// CSS that should only apply to the Material Design app
+
+.loading-spinner .spinner-crescent circle {
+    stroke: $vdq-dark-background-color;
+}
+
+.list-header-md {
+    margin-bottom: 0px;
+}
+
+.alert-md .alert-button {
+    color: #8ba591;
+}

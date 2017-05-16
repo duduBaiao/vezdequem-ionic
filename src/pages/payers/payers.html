@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Escolha</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="payers">
+
+  <ion-list radio-group [(ngModel)]="selectedPayerId" (ionChange)="payerChanged()">
+
+    <ion-item *ngFor="let record of consumption.records">
+      <ion-label>
+        {{record.user.nick_name}}
+
+        <p *ngIf="(consumption.group.purpose == purposeAmmount) && record.last_payment">
+          {{purposeTitle.paid}} ${{ record.last_paid | localeDecimal:defaultLocale:currencyDigits }}
+          em {{ record.last_payment | localeDate:defaultLocale:'dd/MM' }}
+          às {{ record.last_payment | localeDate:defaultLocale:'shortTime' }}
+        </p>
+
+        <p *ngIf="(consumption.group.purpose == purposeCounter) && record.last_payment">
+          {{purposeTitle.paid}}
+          em {{ record.last_payment | localeDate:defaultLocale:'dd/MM' }}
+          às {{ record.last_payment | localeDate:defaultLocale:'shortTime' }}
+        </p>
+      </ion-label>
+      <ion-radio value="{{record.id}}"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+  
+</ion-content>

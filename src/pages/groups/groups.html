@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>Meus Grupos</ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only [disabled]="!dataLoaded" (tap)="loadGroups()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      &nbsp;
+      <button ion-button icon-only [disabled]="!dataLoaded" (tap)="addGroup()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="groups">
+
+  <ion-list *ngIf="dataLoaded">
+    <button ion-item *ngFor="let group of groups" (tap)="groupSelected(group)">
+      {{group.name}}
+    </button>
+  </ion-list>
+
+  <div padding *ngIf="dataLoaded && groups.length == 0" text-center>
+    <ion-label>Você ainda não faz parte de nenhum grupo.</ion-label>
+  </div>
+
+  <try-again *ngIf="!dataLoaded && errorMessage.length > 0"
+    message="{{errorMessage}}" (onTried)="tryAgain()">
+  </try-again>
+
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dados do Grupo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="group-adm">
+
+  <ion-list>
+    <ion-item>      
+      {{consumption.group.name}}
+      <button ion-button outline item-right (tap)="editGroup()">Editar</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Participantes
+    </ion-list-header>
+
+    <ion-item>
+      <button ion-button block small (tap)="addParticipant()">Adicionar Participante</button>
+    </ion-item>
+
+    <ion-item *ngFor="let record of sortedRecords">
+      {{record.user.nick_name}}
+      <div class="selectable-text">{{record.user.email}}</div>
+
+      <div *ngIf="consumption.group.purpose == purposeAmmount">
+        <p *ngIf="record.paid">{{purposeTitle.paid}} ${{record.paid | localeDecimal:defaultLocale:currencyDigits}} - {{record.paid_count}} {{purposeTitle.times}}</p>
+        <p *ngIf="record.taken">{{purposeTitle.took}} ${{record.taken | localeDecimal:defaultLocale:currencyDigits}} - {{record.taken_count}} {{purposeTitle.times}}</p>
+      </div>
+
+      <div *ngIf="consumption.group.purpose == purposeCounter">
+        <p *ngIf="record.paid_count">{{purposeTitle.paid}} {{record.paid_count}} {{purposeTitle.times}}</p>
+      </div>
+
+      <button ion-button item-right color="danger" (tap)="removeRecord(record)">Remover</button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

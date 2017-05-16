@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Fechar</button>
+    </ion-buttons>
+        
+    <ion-title>Novo Grupo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="group">
+
+  <form [formGroup]="groupForm" (submit)="submit($event)">
+
+    <ion-list inset>
+
+      <ion-item>
+        <ion-input formControlName="name" type="text" placeholder="nome do grupo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Registrar valores monetários</ion-label>
+        <ion-checkbox [(ngModel)]="registerAmmount" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Escolher cada consumidor</ion-label>
+        <ion-checkbox [(ngModel)]="chooseTakers" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>
+
+    </ion-list>
+    
+    <div padding-left padding-right>
+      <button ion-button block type="submit">Criar</button>
+    </div>
+
+  </form>
+  
+</ion-content>

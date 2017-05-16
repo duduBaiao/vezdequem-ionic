@@ -1,0 +1,62 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+
+@import "../pages/splash/splash.scss";
+@import "../pages/profile/profile.scss";
+@import '../pages/login/login.scss';
+@import "../pages/register/register.scss";
+@import "../pages/recover-password/recover-password.scss";
+@import '../pages/groups/groups.scss';
+@import "../pages/consumption/consumption.scss";
+@import "../pages/payers/payers.scss";
+@import "../pages/group-adm/group-adm.scss";
+@import "../pages/participant/participant.scss";
+@import "../pages/group/group.scss";
+
+body,
+ion-content {
+  background: $vdq-light-background-color; /* Old browsers */
+  background: -moz-linear-gradient(top, $vdq-light-background-color 0%, $vdq-dark-background-color 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $vdq-light-background-color 0%,$vdq-dark-background-color 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $vdq-light-background-color 0%,$vdq-dark-background-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$vdq-light-background-color}', endColorstr='#{$vdq-dark-background-color}',GradientType=0); /* IE6-9 */  
+}
+
+.item {
+    background-color: rgba(0,0,0,0);
+}
+
+.list-header {
+    color: color($colors, primary);
+}
+
+.toolbar-with-sub-title {
+    line-height: 1.2em;
+}
+
+.toolbar-sub-title {
+    font-size: 60%;
+    font-weight: normal;
+}
+
+.text-lower-case input {
+    text-transform: lowercase;
+}
+
+.alert-button {
+    color: $vdq-dark-background-color;
+}
+
+.button-outline {
+  border-radius: $button-ios-border-radius;
+}
+
+.item {
+    min-height: 3.2em;
+}

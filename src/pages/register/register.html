@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cadastre-se</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="register">
+
+  <form [formGroup]="registerForm" (submit)="submit($event)">
+
+    <ion-list inset>
+
+      <ion-item>
+        <ion-input formControlName="nick_name" type="text" placeholder="nome ou apelido"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="email" type="email" placeholder="email" class="text-lower-case"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="password" type="password" placeholder="senha"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    
+    <div padding-left padding-right>
+      <button ion-button block color="primary" type="submit">Cadastrar</button>
+    </div>
+
+  </form>
+  
+</ion-content>
