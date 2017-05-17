@@ -13,14 +13,16 @@ export class Login {
     private config: Config) {
   }
 
+  defaultOptions() {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return new RequestOptions({headers: headers});
+  }
+
   signIn(email: string, password: string): Observable<User> {
 
     let body = JSON.stringify({user: {email: email, password: password, remember_me: 1}});
 
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});    
-
-    return this.http.post(Config.apiUrl + "/users/sign_in.json", body, options)
+    return this.http.post(Config.apiUrl + "/users/sign_in.json", body, this.defaultOptions())
       .map(res => res.json())
       .map(user => {
 
@@ -34,10 +36,7 @@ export class Login {
 
     let body = JSON.stringify({user: {nick_name: nick_name, email: email, password: password}});
 
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});    
-
-    return this.http.post(Config.apiUrl + "/users.json", body, options)
+    return this.http.post(Config.apiUrl + "/users.json", body, this.defaultOptions())
       .map(res => res.json())
       .map(user => {
 
@@ -51,10 +50,7 @@ export class Login {
 
     let body = JSON.stringify({user: {email: email}});
 
-    let headers = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: headers});    
-
-    return this.http.post(Config.apiUrl + "/users/password.json", body, options);
+    return this.http.post(Config.apiUrl + "/users/password.json", body, this.defaultOptions());
   }  
 }
 
