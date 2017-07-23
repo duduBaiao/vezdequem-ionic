@@ -5,6 +5,6 @@ platforms/
 plugins/
 www/assets/fonts/
 www/build/
-www/build/index.html
+www/index.html
 .DS_Store
 

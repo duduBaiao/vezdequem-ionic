@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vez de Quem?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="theme-color" content="#643648">
+
+  <link rel="manifest" href="manifest.json">
+  <script src="manup.js"></script>
+
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./service-worker.js')
+        .then(function () { console.log('Service Worker Registered'); });
+    }
+  </script>
+
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+
+  <script>
+    var OneSignal = window.OneSignal || [];
+
+    OneSignal.push(["init", {
+      appId: "cca6c052-3128-4eba-bbf8-edb14c03e845",
+      safari_web_id: 'web.onesignal.auto.69735df3-8f8c-40d7-a01f-205a16828de8',
+      autoRegister: true,
+      notifyButton: {
+        enable: false,
+        size: 'small',
+        prenotify: false,
+        showCredit: false,
+        text: {
+          'tip.state.unsubscribed': 'As notificações estão desativadas',
+          'tip.state.subscribed': "Você ativou as notificações",
+          'tip.state.blocked': "Você desativou as notificações",
+          'message.prenotify': 'Toque para ativar as notificações',
+          'message.action.subscribed': "Obrigado por ativar as notificações!",
+          'message.action.resubscribed': "Você reativou as notificações",
+          'message.action.unsubscribed': "Você não receberá mais notificações",
+          'dialog.main.title': 'Gerenciar notificações',
+          'dialog.main.button.subscribe': 'ATIVAR',
+          'dialog.main.button.unsubscribe': 'DESATIVAR',
+          'dialog.blocked.title': 'Desbloquear notificações',
+          'dialog.blocked.message': "Siga as instruções para ativar as notificações:"
+        }
+      },
+    }]);
+  </script>
+
+  <link href="build/main.css" rel="stylesheet">
+
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+</head>
+
+<body>
+  <!-- Safari application cache  -->
+  <script type="text/javascript">
+    if (!('serviceWorker' in navigator) && ('applicationCache' in window)) {
+
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = 'load-appcache.html'
+      document.body.appendChild(iframe);
+    }
+  </script>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+</body>
+
+</html>
