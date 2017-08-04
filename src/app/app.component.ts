@@ -4,7 +4,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {LocaleService} from 'angular2localization/angular2localization';
 import {Config} from '../providers/config';
-import {SplashPage} from '../pages/splash/splash';
 import {LoginPage} from '../pages/login/login';
 import {ProfilePage} from '../pages/profile/profile';
 import {GroupsPage} from '../pages/groups/groups';
@@ -18,7 +17,7 @@ import "intl/locale-data/jsonp/pt-BR";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SplashPage;
+  rootPage: any = null;
 
   pages: Array<{title: string, component: any}>;
 
@@ -28,6 +27,7 @@ export class MyApp {
     private alertCtrl: AlertController,
     private statusBar: StatusBar,
     private splashScreen: SplashScreen,
+    private storage: Storage,
     private config: Config) {
 
     this.initializeApp();
@@ -43,7 +43,19 @@ export class MyApp {
 
       this.locale.definePreferredLocale(Config.language, Config.country);
       this.locale.definePreferredCurrency(Config.currency);
-      
+
+      this.storage.ready().then(() => {    
+        this.config.loadSession().then(
+          (session) => {
+            if (session.authentication == null) {
+              this.nav.setRoot(LoginPage);
+            }
+            else {
+              this.nav.setRoot(GroupsPage);
+            }
+          });
+        });
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleLightContent();

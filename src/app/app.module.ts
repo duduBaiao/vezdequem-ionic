@@ -18,7 +18,6 @@ import {Records} from '../providers/records/records';
 import {Users} from '../providers/users/users';
 
 import {TryAgainComponent} from '../common/components/try-again.component';
-import {SplashPage} from '../pages/splash/splash';
 import {LoginPage} from '../pages/login/login';
 import {ProfilePage} from '../pages/profile/profile';
 import {RegisterPage} from '../pages/register/register';
@@ -42,7 +41,6 @@ import {ParticipantPage} from '../pages/participant/participant';
   declarations: [
     MyApp,
     TryAgainComponent,
-    SplashPage,
     LoginPage,
     ProfilePage,
     RegisterPage,
@@ -56,7 +54,6 @@ import {ParticipantPage} from '../pages/participant/participant';
   ],
   entryComponents: [
     MyApp,
-    SplashPage,
     LoginPage,
     ProfilePage,
     RegisterPage,
